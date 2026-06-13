@@ -1,0 +1,64 @@
+# ===== 环境变量 =====
+.env
+.env.local
+.env.*.local
+
+# ===== 依赖 =====
+node_modules/
+
+# ===== 构建产物 =====
+desktop/build-artifacts/
+desktop/dist/
+desktop/electron-dist/
+desktop/tsconfig.tsbuildinfo
+dist/
+build/
+out/
+*.asar
+
+# ===== 锁文件 =====
+bun.lock
+bun.lockb
+package-lock.json
+pnpm-lock.yaml
+
+# ===== 缓存 =====
+.cache/
+*.cache
+__pycache__/
+.ipynb_checkpoints/
+
+# ===== IDE =====
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ===== 系统文件 =====
+.DS_Store
+Thumbs.db
+
+# ===== 日志 =====
+*.log
+logs/
+
+# ===== 二进制文件 =====
+*.dll
+*.exe
+*.node
+*.pdb
+*.bin
+*.dat
+
+# ===== Sidecar 二进制 =====
+desktop/src-tauri/binaries/claude-sidecar-*
+
+# ===== 应用数据 =====
+.mimo-codex/
+
+# ===== Python =====
+.venv/
+venv/
+*.pyc
+*.pyo
+*.egg-info/
