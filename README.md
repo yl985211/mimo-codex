@@ -145,9 +145,45 @@ bunx electron-builder --mac --publish never
 ```bash
 cd desktop
 
-# AppImage + deb
+# 1. 安装依赖
+bun install
+
+# 2. 构建 sidecar（必需，否则打包后会报 sidecar binary not found）
+bun run build:sidecars
+
+# 3. 构建前端 + Electron 主进程
+bun run build:electron
+
+# 4. 打包 deb + AppImage
 bunx electron-builder --linux --publish never
 ```
+
+产物位于：
+```
+desktop/build-artifacts/electron/
+├── MiMo-Codex-8.0.0-linux-amd64.deb        # deb 安装包
+└── MiMo-Codex-8.0.0-linux-x86_64.AppImage  # AppImage 便携版
+```
+
+**安装 deb：**
+
+```bash
+sudo dpkg -i desktop/build-artifacts/electron/MiMo-Codex-8.0.0-linux-amd64.deb
+```
+
+安装后从应用菜单打开，或命令行运行：`/opt/MiMo-Codex/claude-code-desktop`
+
+**运行 AppImage：**
+
+```bash
+chmod +x desktop/build-artifacts/electron/MiMo-Codex-8.0.0-linux-x86_64.AppImage
+./desktop/build-artifacts/electron/MiMo-Codex-8.0.0-linux-x86_64.AppImage
+```
+
+> **注意：** 版本号不变时建议先清理旧产物再重新打包：
+> ```bash
+> rm -rf desktop/build-artifacts/electron/
+> ```
 
 ---
 
